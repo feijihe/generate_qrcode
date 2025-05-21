@@ -7,6 +7,7 @@ import { defaultCompareState, showDownloadDialog, showGridHelper } from '~/logic
 import { view } from '~/logic/view'
 import { computed, ref, shallowRef, watch } from 'vue'
 import VTooltip from 'floating-vue'
+import { useDropZone } from '@vueuse/core'
 
 const props = defineProps<{
   state: State
@@ -367,7 +368,7 @@ function toggleHighContrast() {
           <ImageDrop
             v-model="dataUrlQRCode"
             title="Source QRCode"
-            @update:model-value="e => showGridHelper = e ? true : false"
+            @update:model-value="(e: any) => showGridHelper = e ? true : false"
           />
           <button
             text-sm op75 text-button

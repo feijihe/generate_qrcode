@@ -7,6 +7,8 @@ import { shuffle } from '@antfu/utils'
 import { dataUrlScannerUpload, defaultScannerState } from '~/logic/state'
 import { view } from '~/logic/view'
 import type { State } from '~/logic/types'
+import { computed, onMounted, ref, watch } from 'vue'
+import { createReusableTemplate, useClipboard, useDropZone } from '@vueuse/core'
 
 const props = defineProps<{
   state: State
