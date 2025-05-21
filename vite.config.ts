@@ -1,12 +1,42 @@
+import path from 'path'
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import vue from "@vitejs/plugin-vue";
+import UnoCSS from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+import NutUIResolver from '@nutui/auto-import-resolver'
 
-// @ts-expect-error process is a nodejs global
 const host = process.env.TAURI_DEV_HOST;
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [react()],
+  resolve: {
+    alias: {
+      '~': path.resolve(__dirname, './src')
+    },
+    extensions: [".js", ".ts", ".jsx", ".tsx", ".json", ".vue"],
+  },
+  plugins: [
+    UnoCSS(),
+    AutoImport({
+      imports: [
+        'vue',
+        '@vueuse/core',
+      ],
+      dts: true,
+      dirs: [
+        './src/composables',
+      ],
+      vueTemplate: true,
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      dts: true,
+      resolvers: [ElementPlusResolver(), NutUIResolver()],
+    }),
+    vue(),
+  ],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //

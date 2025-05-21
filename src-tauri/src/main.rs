@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    generate_qrcode_lib::run()
+    tauri_app_lib::run()
 }
