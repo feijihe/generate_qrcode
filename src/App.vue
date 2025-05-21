@@ -163,6 +163,10 @@ html {
     border-color: var(--un-default-border-color, #e5e7eb);
 }
 
+textarea {
+  resize: vertical;
+}
+
 button, input, optgroup, select, textarea {
     font-family: inherit;
     font-feature-settings: inherit;
