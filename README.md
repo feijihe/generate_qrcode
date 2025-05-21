@@ -1,1 +1,1 @@
-基于[Antfu](https://github.com/antfu)的[qrcode-toolkit](https://github.com/antfu/qrcode-toolkit)制作的本地本地离线版二维码生成工具
+基于[Antfu](https://github.com/antfu)的[qrcode-toolkit](https://github.com/antfu/qrcode-toolkit)制作的本地离线版二维码生成工具
